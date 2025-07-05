@@ -5,7 +5,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px; /* tamanho base aumentado para legibilidade */
+  font-size: 16px;
   margin: 0;
   padding: 0;
   background: #fff;
@@ -20,21 +20,19 @@ header {
   text-align: center;
 }
 
-/* Container da logo e título */
 .logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
   margin-bottom: 10px;
-  flex-wrap: wrap; /* para melhor responsividade */
 }
 
 .logo-container img {
   height: 50px;
   width: auto;
   border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .logo-container h1 {
@@ -42,8 +40,7 @@ header {
   color: white;
   margin: 0;
   font-weight: 700;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  white-space: nowrap; /* evita quebra no título */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Navegação */
@@ -56,7 +53,7 @@ nav a {
   color: white;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
@@ -69,22 +66,23 @@ main {
   padding: 20px;
   max-width: 1000px;
   margin: auto;
-  font-size: 1rem; /* garante textos legíveis */
-  line-height: 1.5; /* melhora a leitura */
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-/* Galeria de imagens */
+/* Galeria de imagens responsiva */
 .galeria {
   display: flex;
-  gap: 15px;
   flex-wrap: wrap;
+  gap: 15px;
   justify-content: center;
 }
 
 .galeria img {
-  width: 100%; /* deixa a imagem ocupar 100% do container */
-  max-width: 150px; /* limite máximo para o tamanho da imagem */
-  height: auto; /* altura automática para manter proporção */
+  flex: 1 1 calc(33.333% - 30px);
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
@@ -95,17 +93,17 @@ main {
   transform: scale(1.05);
 }
 
-/* Botão modo escuro */
+/* Botões */
 button {
   padding: 10px 20px;
-  background: #000000;
-  color: white;
+  background: #000;
+  color: #fff;
   border: none;
   border-radius: 5px;
   margin: 20px auto;
   cursor: pointer;
   display: block;
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
   font-weight: 600;
   transition: background-color 0.3s ease;
 }
@@ -114,7 +112,7 @@ button:hover {
   background-color: #01579b;
 }
 
-/* Inputs e textarea */
+/* Formulários */
 input, textarea {
   display: block;
   margin-bottom: 10px;
@@ -122,10 +120,10 @@ input, textarea {
   width: 100%;
   border-radius: 5px;
   border: 1px solid #ccc;
-  font-size: 1rem; /* 16px para legibilidade */
+  font-size: 1rem;
   font-family: inherit;
   line-height: 1.4;
-  resize: vertical; /* permite redimensionar verticalmente */
+  resize: vertical;
 }
 
 /* Modo escuro */
@@ -173,7 +171,7 @@ input, textarea {
 }
 
 .modal img {
-  max-width: 80%;
+  max-width: 90%;
   max-height: 80%;
   margin-bottom: 10px;
   border-radius: 8px;
@@ -181,7 +179,7 @@ input, textarea {
 
 .modal p {
   color: white;
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
   max-width: 80%;
   text-align: center;
   margin: 0 20px 20px 20px;
@@ -224,6 +222,12 @@ input, textarea {
 }
 
 /* Responsividade */
+@media (max-width: 900px) {
+  .galeria img {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
 @media (max-width: 600px) {
   .logo-container {
     flex-direction: column;
@@ -236,6 +240,6 @@ input, textarea {
   }
 
   .galeria img {
-    max-width: 100px; /* reduz um pouco para telas pequenas */
+    flex: 1 1 100%;
   }
 }
