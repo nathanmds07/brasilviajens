@@ -1,0 +1,38 @@
+{
+    "name": "Brasil Viagens",
+    "short_name": "Viagens",
+    "description": "Explore os destinos turísticos mais bonitos e culturais do Brasil.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#68621a",
+    "orientation": "portrait-primary",
+    "scope": "./",
+    "icons": [
+      {
+        "src": "imagens/icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "imagens/icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any maskable"
+      }
+    ],
+    "screenshots": [
+      {
+        "src": "imagens/captura-home.png",
+        "sizes": "540x960",
+        "type": "image/png",
+        "form_factor": "narrow"
+      },
+      {
+        "src": "imagens/captura-galeria.png",
+        "sizes": "540x960",
+        "type": "image/png",
+        "form_factor": "narrow"
+      }
+    ]
+  }
