@@ -27,14 +27,22 @@
     <h1 id="saudacao" aria-live="polite"></h1>
     <h2>Bem-vindo(a) ao nosso site “Viagens e Turismo – Descobrindo o Brasil”!</h2>
     <p>
-      Aqui você encontrará informações incríveis sobre os destinos turísticos mais bonitos e culturais do nosso país. Explore praias, cidades históricas, parques naturais e muito mais!
+      Aqui você encontrará informações incríveis sobre os destinos turísticos mais bonitos e culturais do nosso país.
+      Explore praias, cidades históricas, parques naturais e muito mais!
       Prepare-se para se encantar e planejar sua próxima viagem pelo Brasil.
     </p>
 
     <section aria-labelledby="floripa-title">
       <h2 id="floripa-title">Conheça Florianópolis!</h2>
-      <img src="imagens/floripa.jpg" alt="Florianópolis - Ilha da Magia" />
-      <p>Explore as belezas da Ilha da Magia!</p>
+      <picture>
+        <source srcset="imagens/floripa-small.jpg" media="(max-width: 600px)">
+        <img src="imagens/floripa.jpg"
+             alt="Florianópolis - Ilha da Magia"
+             width="600" height="400"
+             loading="lazy"
+             style="width: 100%; max-width: 800px; border-radius: 10px;" />
+      </picture>
+      <p>Explore as belezas da Ilha da Magia e descubra praias incríveis, cultura rica e uma vibe encantadora!</p>
     </section>
   </main>
 
