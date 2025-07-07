@@ -41,12 +41,12 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function imagemAnterior(event) {
-    event?.stopPropagation();
+    if (event) event.stopPropagation();
     mostrarImagem(indiceAtual - 1);
   }
 
   function proximaImagem(event) {
-    event?.stopPropagation();
+    if (event) event.stopPropagation();
     mostrarImagem(indiceAtual + 1);
   }
 
@@ -74,10 +74,9 @@ window.addEventListener("DOMContentLoaded", () => {
     else if (e.key === 'ArrowLeft') mostrarImagem(indiceAtual - 1);
     else if (e.key === 'ArrowRight') mostrarImagem(indiceAtual + 1);
   });
-
-  // Modo escuro - botão
-  const btnModoEscuro = document.querySelector('button[onclick="alternarModoEscuro()"]');
-  btnModoEscuro?.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-  });
 });
+
+// Alternar modo escuro
+function alternarModoEscuro() {
+  document.body.classList.toggle('dark-mode');
+}
