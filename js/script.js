@@ -1,3 +1,4 @@
+// Saudação dinâmica no index.html
 window.addEventListener("DOMContentLoaded", () => {
   const saudacao = document.getElementById("saudacao");
   if (saudacao) {
@@ -9,6 +10,7 @@ window.addEventListener("DOMContentLoaded", () => {
     saudacao.textContent = mensagem;
   }
 
+  // Galeria e modal
   const galeriaImgs = document.querySelectorAll('.galeria img');
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg');
@@ -17,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const btnPrev = document.getElementById('btn-prev');
   const btnNext = document.getElementById('btn-next');
 
-  if (galeriaImgs.length > 0 && modal && modalImg && descricao) {
+  if (galeriaImgs.length > 0 && modal && modalImg && descricao && btnFechar && btnPrev && btnNext) {
     let indiceAtual = 0;
 
     function abrirModal(indice) {
@@ -28,7 +30,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     function fecharModal(event) {
-      // Fecha se clicar no fundo do modal (fundo escuro) ou no botão fechar
       if (event.target === modal || event.target === btnFechar) {
         modal.classList.remove('active');
       }
@@ -70,6 +71,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Mostrar mais/menos na página Sobre
 function toggleConteudo() {
   const conteudo = document.getElementById("conteudo-extra");
   const botao = document.getElementById("btn-toggle");
@@ -86,6 +88,7 @@ function toggleConteudo() {
   }
 }
 
+// Validação simples do formulário (contato.html)
 function validarFormulario(event) {
   event.preventDefault();
 
@@ -101,10 +104,12 @@ function validarFormulario(event) {
   document.getElementById("form-contato").reset();
 }
 
+// Alternar modo escuro em todas as páginas
 function alternarModoEscuro() {
   document.body.classList.toggle("dark-mode");
 }
 
+// Registro automático do Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('sw.js')
