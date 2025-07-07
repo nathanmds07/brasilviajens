@@ -1,4 +1,3 @@
-// Saudação dinâmica no index.html
 window.addEventListener("DOMContentLoaded", () => {
   const saudacao = document.getElementById("saudacao");
   if (saudacao) {
@@ -10,7 +9,6 @@ window.addEventListener("DOMContentLoaded", () => {
     saudacao.textContent = mensagem;
   }
 
-  // Inicializar eventos da galeria (se houver)
   const galeriaImgs = document.querySelectorAll('.galeria img');
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg');
@@ -30,6 +28,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     function fecharModal(event) {
+      // Fecha se clicar no fundo do modal (fundo escuro) ou no botão fechar
       if (event.target === modal || event.target === btnFechar) {
         modal.classList.remove('active');
       }
@@ -56,12 +55,12 @@ window.addEventListener("DOMContentLoaded", () => {
     galeriaImgs.forEach((img, i) => {
       img.addEventListener('click', () => abrirModal(i));
     });
+
     btnFechar.addEventListener('click', fecharModal);
     btnPrev.addEventListener('click', imagemAnterior);
     btnNext.addEventListener('click', proximaImagem);
     modal.addEventListener('click', fecharModal);
 
-    // Navegação por teclado (ESC, setas)
     window.addEventListener('keydown', (e) => {
       if (!modal.classList.contains('active')) return;
       if (e.key === 'Escape') fecharModal({ target: modal });
@@ -71,7 +70,6 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Mostrar mais/menos na página Sobre
 function toggleConteudo() {
   const conteudo = document.getElementById("conteudo-extra");
   const botao = document.getElementById("btn-toggle");
@@ -88,7 +86,6 @@ function toggleConteudo() {
   }
 }
 
-// Validação simples do formulário (contato.html)
 function validarFormulario(event) {
   event.preventDefault();
 
@@ -104,12 +101,10 @@ function validarFormulario(event) {
   document.getElementById("form-contato").reset();
 }
 
-// Alternar modo escuro em todas as páginas
 function alternarModoEscuro() {
   document.body.classList.toggle("dark-mode");
 }
 
-// Registro automático do Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('sw.js')
