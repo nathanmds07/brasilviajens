@@ -155,6 +155,63 @@ input, textarea {
 .modal {
   display: none;
   position: fixed;
-  top: 0; left
+  top: 0; 
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+}
 
+.modal.active {
+  display: flex;
+  cursor: default;
+}
 
+.modal img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #000;
+  user-select: none;
+}
+
+.modal-btn, .modal-btn-fechar {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  top: 10px;
+  padding: 0 10px;
+}
+
+.modal-btn-fechar {
+  right: 10px;
+}
+
+#btn-prev {
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#btn-next {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#descricao {
+  color: white;
+  text-align: center;
+  max-width: 90vw;
+  margin-top: 10px;
+  user-select: none;
+  font-size: 1.1rem;
+}
