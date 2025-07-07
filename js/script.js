@@ -1,5 +1,11 @@
-// Saudação dinâmica no index.html
 window.addEventListener("DOMContentLoaded", () => {
+  // Aplicar modo escuro salvo no localStorage
+  const modoSalvo = localStorage.getItem("modoEscuro");
+  if (modoSalvo === "true") {
+    document.body.classList.add("dark-mode");
+  }
+
+  // Saudação dinâmica
   const saudacao = document.getElementById("saudacao");
   if (saudacao) {
     const hora = new Date().getHours();
@@ -104,9 +110,11 @@ function validarFormulario(event) {
   document.getElementById("form-contato").reset();
 }
 
-// Alternar modo escuro em todas as páginas
+// Alternar modo escuro e salvar no localStorage
 function alternarModoEscuro() {
   document.body.classList.toggle("dark-mode");
+  const estaEscuro = document.body.classList.contains("dark-mode");
+  localStorage.setItem("modoEscuro", estaEscuro);
 }
 
 // Registro automático do Service Worker
