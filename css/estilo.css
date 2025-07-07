@@ -20,7 +20,6 @@ header {
   text-align: center;
 }
 
-/* Container da logo e título */
 .logo-container {
   display: flex;
   align-items: center;
@@ -44,7 +43,6 @@ header {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-/* Navegação */
 nav {
   margin-top: 10px;
 }
@@ -58,7 +56,8 @@ nav a {
   transition: color 0.3s ease;
 }
 
-nav a:hover {
+nav a:hover,
+nav a[aria-current="page"] {
   color: #ffde59;
 }
 
@@ -71,25 +70,28 @@ main {
   line-height: 1.5;
 }
 
-/* Galeria de imagens */
+/* Galeria */
 .galeria {
   display: flex;
-  gap: 15px;
   flex-wrap: wrap;
+  gap: 15px;
   justify-content: center;
 }
 
 .galeria img {
-  max-width: 150px;
+  width: 150px;
   height: 100px;
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
 }
 
-.galeria img:hover {
+.galeria img:hover,
+.galeria img:focus {
   transform: scale(1.05);
+  box-shadow: 0 0 8px #ffde59;
 }
 
 /* Botão modo escuro */
@@ -107,22 +109,10 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:hover,
+button:focus {
   background-color: #01579b;
-}
-
-/* Inputs e textarea */
-input, textarea {
-  display: block;
-  margin-bottom: 10px;
-  padding: 10px;
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  font-family: inherit;
-  line-height: 1.4;
-  resize: vertical;
+  outline: none;
 }
 
 /* Modo escuro */
@@ -139,11 +129,14 @@ input, textarea {
   color: #90caf9;
 }
 
-.dark-mode input,
-.dark-mode textarea {
-  background-color: #2b2b2b;
-  color: #fff;
-  border: 1px solid #555;
+.dark-mode nav a:hover,
+.dark-mode nav a[aria-current="page"] {
+  color: #ffde59;
+}
+
+.dark-mode .galeria img:hover,
+.dark-mode .galeria img:focus {
+  box-shadow: 0 0 8px #ffde59;
 }
 
 .dark-mode button {
@@ -151,8 +144,82 @@ input, textarea {
   color: white;
 }
 
-/* Modal da galeria */
+.dark-mode button:hover,
+.dark-mode button:focus {
+  background-color: #006bb3;
+}
+
+/* Modal */
 .modal {
   display: none;
   position: fixed;
-  top: 0; left
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal.active {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.modal img {
+  max-width: 90vw;
+  max-height: 70vh;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  user-select: none;
+}
+
+.modal p#descricao {
+  color: white;
+  font-size: 1.2rem;
+  margin: 10px 0 20px 0;
+}
+
+/* Botões modal */
+.modal-btn,
+.modal-btn-fechar {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  padding: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.modal-btn:hover,
+.modal-btn:focus,
+.modal-btn-fechar:hover,
+.modal-btn-fechar:focus {
+  color: #ffde59;
+  outline: none;
+}
+
+/* Posicionamento dos botões no modal */
+#btn-fechar {
+  align-self: flex-end;
+  font-size: 2.5rem;
+}
+
+#btn-prev {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+}
+
+#btn-next {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
