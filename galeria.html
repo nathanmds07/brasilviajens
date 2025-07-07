@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Galeria - Brasil Viagens</title>
   <link rel="stylesheet" href="css/estilo.css" />
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#68621a" />
   <script src="js/script.js" defer></script>
 </head>
 <body>
@@ -15,7 +13,7 @@
       <img src="imagens/logo-explorabrasil.png" alt="Logo Brasil Viagens" />
       <h1>Brasil Viagens</h1>
     </div>
-    <nav aria-label="Menu principal">
+    <nav>
       <a href="index.html">Início</a>
       <a href="sobre.html">Sobre</a>
       <a href="galeria.html" aria-current="page">Galeria</a>
@@ -24,62 +22,32 @@
   </header>
 
   <main>
-    <!-- Saudação dinâmica -->
-    <p id="saudacao" aria-live="polite" class="saudacao"></p>
-
+    <p id="saudacao" class="saudacao"></p>
     <h1>Galeria de Destinos</h1>
-
-    <!-- Norte e Nordeste -->
-    <section aria-labelledby="norte-nordeste">
-      <h2 id="norte-nordeste">🌅 Norte e Nordeste</h2>
-      <div class="galeria">
-        <img src="imagens/maragogi.jpg" alt="Maragogi (AL) - Caribe brasileiro" loading="lazy" tabindex="0" />
-        <img src="imagens/jericoacoara.jpg" alt="Jericoacoara (CE) - Dunas e lagoas" loading="lazy" tabindex="0" />
-        <img src="imagens/lencois_maranhenses.jpg" alt="Lençóis Maranhenses (MA) - Dunas e lagoas" loading="lazy" tabindex="0" />
-      </div>
-    </section>
-
-    <!-- Centro-Oeste e Sudeste -->
-    <section aria-labelledby="centro-sudeste">
-      <h2 id="centro-sudeste">🏞️ Centro-Oeste e Sudeste</h2>
-      <div class="galeria">
-        <img src="imagens/chapada_dos_guimaraes.jpg" alt="Chapada dos Guimarães (MT)" loading="lazy" tabindex="0" />
-        <img src="imagens/pantanal.jpg" alt="Pantanal (MS) - Biodiversidade" loading="lazy" tabindex="0" />
-        <img src="imagens/rio_de_janeiro.jpg" alt="Rio de Janeiro (RJ) - Cristo Redentor" loading="lazy" tabindex="0" />
-      </div>
-    </section>
-
-    <!-- Sul -->
-    <section aria-labelledby="sul">
-      <h2 id="sul">🏔️ Sul</h2>
-      <div class="galeria">
-        <img src="imagens/gramado.jpg" alt="Gramado (RS) - Influência europeia" loading="lazy" tabindex="0" />
-        <img src="imagens/curitiba_jardim_botanico.jpg" alt="Curitiba (PR) - Jardim Botânico" loading="lazy" tabindex="0" />
-        <img src="imagens/floripa.jpg" alt="Florianópolis (SC) - Ilha da Magia" loading="lazy" tabindex="0" />
-      </div>
-    </section>
-
-    <!-- Extras -->
-    <section aria-labelledby="extras-culturais">
-      <h2 id="extras-culturais">🌿 Extras culturais ou naturais</h2>
-      <div class="galeria">
-        <img src="imagens/amazonia.jpg" alt="Amazônia - Maior floresta tropical" loading="lazy" tabindex="0" />
-        <img src="imagens/iguacu_cataratas.jpg" alt="Cataratas do Iguaçu - Quedas d’água" loading="lazy" tabindex="0" />
-        <img src="imagens/bonito.jpg" alt="Bonito (MS) - Rios cristalinos e grutas" loading="lazy" tabindex="0" />
-      </div>
-    </section>
+    <div class="galeria">
+      <img src="imagens/maragogi.jpg" alt="Maragogi (AL)" tabindex="0" />
+      <img src="imagens/jericoacoara.jpg" alt="Jericoacoara (CE)" tabindex="0" />
+      <img src="imagens/lencois_maranhenses.jpg" alt="Lençóis Maranhenses (MA)" tabindex="0" />
+      <img src="imagens/chapada_dos_guimaraes.jpg" alt="Chapada dos Guimarães (MT)" tabindex="0" />
+      <img src="imagens/pantanal.jpg" alt="Pantanal (MS)" tabindex="0" />
+      <img src="imagens/rio_de_janeiro.jpg" alt="Rio de Janeiro (RJ)" tabindex="0" />
+      <img src="imagens/gramado.jpg" alt="Gramado (RS)" tabindex="0" />
+      <img src="imagens/curitiba_jardim_botanico.jpg" alt="Curitiba (PR)" tabindex="0" />
+      <img src="imagens/floripa.jpg" alt="Florianópolis (SC)" tabindex="0" />
+      <img src="imagens/amazonia.jpg" alt="Amazônia" tabindex="0" />
+      <img src="imagens/iguacu_cataratas.jpg" alt="Cataratas do Iguaçu" tabindex="0" />
+      <img src="imagens/bonito.jpg" alt="Bonito (MS)" tabindex="0" />
+    </div>
   </main>
 
-  <button type="button" onclick="alternarModoEscuro()">Modo Escuro</button>
+  <button onclick="alternarModoEscuro()">Modo Escuro</button>
 
-  <!-- Modal com imagem ampliada e navegação -->
   <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="descricao" tabindex="-1">
-    <button id="btn-fechar" aria-label="Fechar modal" class="modal-btn-fechar">×</button>
-    <button id="btn-prev" class="modal-btn" aria-label="Imagem anterior">‹</button>
+    <button id="btn-fechar" aria-label="Fechar modal">×</button>
+    <button id="btn-prev" aria-label="Imagem anterior">‹</button>
     <img id="modalImg" alt="Imagem ampliada" />
-    <button id="btn-next" class="modal-btn" aria-label="Próxima imagem">›</button>
+    <button id="btn-next" aria-label="Próxima imagem">›</button>
     <p id="descricao"></p>
   </div>
 </body>
 </html>
-
