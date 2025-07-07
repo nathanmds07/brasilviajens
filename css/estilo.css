@@ -61,6 +61,14 @@ nav a[aria-current="page"] {
   color: #ffde59;
 }
 
+/* Saudação */
+.saudacao {
+  font-weight: 600;
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 /* Conteúdo principal */
 main {
   padding: 20px;
@@ -73,8 +81,8 @@ main {
 /* Galeria */
 .galeria {
   display: flex;
-  flex-wrap: wrap;
   gap: 15px;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -84,20 +92,20 @@ main {
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  outline: none;
+  transition: transform 0.3s ease;
+  outline-offset: 2px;
 }
 
 .galeria img:hover,
 .galeria img:focus {
   transform: scale(1.05);
-  box-shadow: 0 0 8px #ffde59;
+  outline: 2px solid #ffde59;
 }
 
 /* Botão modo escuro */
 button {
   padding: 10px 20px;
-  background: #000000;
+  background: #000;
   color: white;
   border: none;
   border-radius: 5px;
@@ -136,7 +144,7 @@ button:focus {
 
 .dark-mode .galeria img:hover,
 .dark-mode .galeria img:focus {
-  box-shadow: 0 0 8px #ffde59;
+  outline: 2px solid #ffde59;
 }
 
 .dark-mode button {
@@ -144,82 +152,63 @@ button:focus {
   color: white;
 }
 
-.dark-mode button:hover,
-.dark-mode button:focus {
-  background-color: #006bb3;
-}
-
 /* Modal */
 .modal {
   display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.8);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  padding: 20px;
+  z-index: 1000;
 }
 
 .modal.active {
   display: flex;
-  flex-direction: column;
-  text-align: center;
 }
 
 .modal img {
   max-width: 90vw;
-  max-height: 70vh;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  user-select: none;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #000;
 }
 
-.modal p#descricao {
-  color: white;
-  font-size: 1.2rem;
-  margin: 10px 0 20px 0;
-}
-
-/* Botões modal */
 .modal-btn,
 .modal-btn-fechar {
-  background: transparent;
+  background: rgba(255,255,255,0.1);
   border: none;
   color: white;
   font-size: 2rem;
   cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 50%;
+  margin: 0 10px;
   user-select: none;
-  padding: 0 15px;
-  transition: color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+.modal-btn-fechar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2.5rem;
+  border-radius: 5px;
+  padding: 5px 12px;
 }
 
 .modal-btn:hover,
 .modal-btn:focus,
 .modal-btn-fechar:hover,
 .modal-btn-fechar:focus {
-  color: #ffde59;
+  background-color: #ffde59;
+  color: black;
   outline: none;
 }
 
-/* Posicionamento dos botões no modal */
-#btn-fechar {
-  align-self: flex-end;
-  font-size: 2.5rem;
-}
-
-#btn-prev {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-}
-
-#btn-next {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
+.modal p {
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 600;
 }
