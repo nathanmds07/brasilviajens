@@ -46,7 +46,15 @@ window.addEventListener("DOMContentLoaded", () => {
       if (indice >= galeriaImgs.length) indice = 0;
       indiceAtual = indice;
       modalImg.src = galeriaImgs[indiceAtual].src;
-      descricao.textContent = galeriaImgs[indiceAtual].alt;
+
+      // Pegando legenda do figcaption do figure pai da imagem
+      const figure = galeriaImgs[indiceAtual].closest('figure');
+      if (figure) {
+        const caption = figure.querySelector('figcaption');
+        descricao.textContent = caption ? caption.textContent : '';
+      } else {
+        descricao.textContent = galeriaImgs[indiceAtual].alt || '';
+      }
     }
 
     function imagemAnterior(event) {
