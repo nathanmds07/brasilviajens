@@ -181,3 +181,26 @@ main {
   user-select: none;
   font-size: 1.1rem;
 }
+
+/* Botão modo escuro fixo e centralizado no rodapé */
+button#btn-modo-escuro {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #68621a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 10000;
+  transition: background-color 0.3s ease;
+}
+
+button#btn-modo-escuro:hover {
+  background-color: #504b13;
+}
+
