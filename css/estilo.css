@@ -27,12 +27,12 @@ header {
 }
 
 body.dark-mode header {
-  background-color: #000000; /* fundo preto no modo escuro */
+  background-color: #000000;
 }
 
 body.dark-mode header .logo-container h1,
 body.dark-mode header nav a {
-  color: #ADD8E6; /* azul claro */
+  color: #ADD8E6;
   text-shadow: none;
 }
 
@@ -47,7 +47,6 @@ body.dark-mode header nav a {
 
 .logo-container img {
   height: 50px;
-  width: auto;
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
@@ -125,7 +124,7 @@ main {
   user-select: none;
 }
 
-/* Modal da galeria */
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -148,16 +147,17 @@ main {
 }
 
 .modal img {
-  width: 600px;         
-  height: 400px;        
-  object-fit: contain;  
+  width: 600px;
+  height: 400px;
+  object-fit: contain;
   background-color: black;
   border-radius: 8px;
   box-shadow: 0 0 10px #000;
   user-select: none;
 }
 
-.modal-btn, .modal-btn-fechar {
+.modal-btn,
+.modal-btn-fechar {
   background: transparent;
   border: none;
   color: white;
@@ -194,19 +194,12 @@ main {
   font-size: 1.1rem;
 }
 
-/* Container fixo e centralizado para botões no rodapé */
-#container-botoes-fixo {
+/* Botão modo escuro fixo no rodapé */
+button#btn-modo-escuro {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 10000;
-}
-
-/* Estilo dos botões dentro do container fixo */
-#container-botoes-fixo button {
   padding: 10px 20px;
   font-size: 1rem;
   border-radius: 8px;
@@ -215,27 +208,18 @@ main {
   border: none;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
   transition: background-color 0.3s ease;
 }
 
-#container-botoes-fixo button:hover {
+button#btn-modo-escuro:hover {
   background-color: #504b13;
 }
 
-/* Botão enviar no modo escuro */
-body.dark-mode #container-botoes-fixo button[type="submit"] {
-  background-color: #000000;
-  color: white;
-}
-
-body.dark-mode #container-botoes-fixo button[type="submit"]:hover {
-  background-color: #222222;
-}
-
-/* Estilo para o formulário de contato */
+/* Formulário de contato */
 form#form-contato {
   max-width: 400px;
-  margin: 20px auto 100px auto; /* margem inferior maior para não ficar atrás dos botões fixos */
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -243,7 +227,6 @@ form#form-contato {
 
 form#form-contato label {
   font-weight: 600;
-  margin-bottom: 5px;
   color: inherit;
 }
 
@@ -259,11 +242,39 @@ form#form-contato textarea {
   transition: border-color 0.3s ease;
 }
 
-form#form-contato input[type="text"]:focus,
-form#form-contato input[type="email"]:focus,
+form#form-contato input:focus,
 form#form-contato textarea:focus {
   border-color: #68621a;
   outline: none;
+}
+
+form#form-contato textarea {
+  min-height: 100px;
+}
+
+form#form-contato button[type="submit"] {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #68621a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form#form-contato button[type="submit"]:hover {
+  background-color: #504b13;
+}
+
+/* Botão Enviar no modo escuro */
+body.dark-mode form#form-contato button[type="submit"] {
+  background-color: #000000;
+  color: white;
+}
+
+body.dark-mode form#form-contato button[type="submit"]:hover {
+  background-color: #222222;
 }
 
 form#form-contato textarea {
