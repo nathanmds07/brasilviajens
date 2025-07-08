@@ -1,11 +1,11 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // Aplicar modo escuro salvo no localStorage
+  // 1. Aplicar modo escuro salvo no localStorage
   const modoSalvo = localStorage.getItem("modoEscuro");
   if (modoSalvo === "true") {
     document.body.classList.add("dark-mode");
   }
 
-  // Saudação dinâmica
+  // 2. Saudação dinâmica (index.html)
   const saudacao = document.getElementById("saudacao");
   if (saudacao) {
     const hora = new Date().getHours();
@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
     saudacao.textContent = mensagem;
   }
 
-  // Galeria e modal
+  // 3. Galeria com Modal (galeria.html)
   const galeriaImgs = document.querySelectorAll('.galeria img');
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg');
@@ -25,13 +25,26 @@ window.addEventListener("DOMContentLoaded", () => {
   const btnPrev = document.getElementById('btn-prev');
   const btnNext = document.getElementById('btn-next');
 
-  if (galeriaImgs.length > 0 && modal && modalImg && descricao && btnFechar && btnPrev && btnNext) {
+  if (galeriaImgs.length && modal && modalImg && descricao) {
+    let imagens = [];
     let indiceAtual = 0;
+
+    // Captura as imagens e figcaption de cada figure
+    galeriaImgs.forEach((img, index) => {
+      const figcaption = img.closest('figure')?.querySelector('figcaption');
+      imagens.push({
+        src: img.src,
+        alt: img.alt || "",
+        legenda: figcaption?.innerText || ""
+      });
+
+      img.addEventListener('click', () => abrirModal(index));
+    });
 
     function abrirModal(indice) {
       indiceAtual = indice;
-      modal.classList.add('active');
       mostrarImagem(indiceAtual);
+      modal.classList.add('active');
       modal.focus();
     }
 
@@ -42,19 +55,11 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     function mostrarImagem(indice) {
-      if (indice < 0) indice = galeriaImgs.length - 1;
-      if (indice >= galeriaImgs.length) indice = 0;
+      if (indice < 0) indice = imagens.length - 1;
+      if (indice >= imagens.length) indice = 0;
       indiceAtual = indice;
-      modalImg.src = galeriaImgs[indiceAtual].src;
-
-      // Pegando legenda do figcaption do figure pai da imagem
-      const figure = galeriaImgs[indiceAtual].closest('figure');
-      if (figure) {
-        const caption = figure.querySelector('figcaption');
-        descricao.textContent = caption ? caption.textContent : '';
-      } else {
-        descricao.textContent = galeriaImgs[indiceAtual].alt || '';
-      }
+      modalImg.src = imagens[indiceAtual].src;
+      descricao.textContent = imagens[indiceAtual].legenda;
     }
 
     function imagemAnterior(event) {
@@ -67,14 +72,10 @@ window.addEventListener("DOMContentLoaded", () => {
       mostrarImagem(indiceAtual + 1);
     }
 
-    galeriaImgs.forEach((img, i) => {
-      img.addEventListener('click', () => abrirModal(i));
-    });
-
-    btnFechar.addEventListener('click', fecharModal);
-    btnPrev.addEventListener('click', imagemAnterior);
-    btnNext.addEventListener('click', proximaImagem);
-    modal.addEventListener('click', fecharModal);
+    btnFechar?.addEventListener('click', fecharModal);
+    btnPrev?.addEventListener('click', imagemAnterior);
+    btnNext?.addEventListener('click', proximaImagem);
+    modal?.addEventListener('click', fecharModal);
 
     window.addEventListener('keydown', (e) => {
       if (!modal.classList.contains('active')) return;
@@ -83,53 +84,58 @@ window.addEventListener("DOMContentLoaded", () => {
       else if (e.key === 'ArrowRight') mostrarImagem(indiceAtual + 1);
     });
   }
+
+  // 4. Mostrar mais/menos (sobre.html)
+  const botaoToggle = document.getElementById("btn-toggle");
+  if (botaoToggle) {
+    botaoToggle.addEventListener("click", () => {
+      const conteudo = document.getElementById("conteudo-extra");
+      if (!conteudo) return;
+
+      if (conteudo.hasAttribute('hidden')) {
+        conteudo.removeAttribute('hidden');
+        botaoToggle.textContent = "Mostrar menos";
+        botaoToggle.setAttribute("aria-expanded", "true");
+      } else {
+        conteudo.setAttribute('hidden', '');
+        botaoToggle.textContent = "Mostrar mais";
+        botaoToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  // 5. Validação do formulário (contato.html)
+  const form = document.getElementById("form-contato");
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const nome = document.getElementById("nome");
+      const email = document.getElementById("email");
+
+      if (!nome.value.trim() || !email.value.trim()) {
+        alert("Por favor, preencha o nome e o e-mail.");
+        return;
+      }
+
+      alert("Mensagem enviada com sucesso!");
+      form.reset();
+    });
+  }
 });
 
-// Mostrar mais/menos na página Sobre
-function toggleConteudo() {
-  const conteudo = document.getElementById("conteudo-extra");
-  const botao = document.getElementById("btn-toggle");
-  if (!conteudo || !botao) return;
-
-  if (conteudo.hasAttribute('hidden')) {
-    conteudo.removeAttribute('hidden');
-    botao.textContent = "Mostrar menos";
-    botao.setAttribute("aria-expanded", "true");
-  } else {
-    conteudo.setAttribute('hidden', '');
-    botao.textContent = "Mostrar mais";
-    botao.setAttribute("aria-expanded", "false");
-  }
-}
-
-// Validação simples do formulário (contato.html)
-function validarFormulario(event) {
-  event.preventDefault();
-
-  const nome = document.getElementById("nome");
-  const email = document.getElementById("email");
-
-  if (!nome.value.trim() || !email.value.trim()) {
-    alert("Por favor, preencha o nome e o e-mail.");
-    return;
-  }
-
-  alert("Mensagem enviada com sucesso!");
-  document.getElementById("form-contato").reset();
-}
-
-// Alternar modo escuro e salvar no localStorage
+// 6. Alternar modo escuro (todas páginas)
 function alternarModoEscuro() {
   document.body.classList.toggle("dark-mode");
   const estaEscuro = document.body.classList.contains("dark-mode");
   localStorage.setItem("modoEscuro", estaEscuro);
 }
 
-// Registro automático do Service Worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js')
-      .then(reg => console.log('Service Worker registrado com sucesso:', reg.scope))
-      .catch(err => console.log('Falha ao registrar Service Worker:', err));
+// 7. Registrar o Service Worker (PWA)
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("sw.js")
+      .then((reg) => console.log("Service Worker registrado com sucesso:", reg.scope))
+      .catch((err) => console.log("Erro ao registrar Service Worker:", err));
   });
 }
