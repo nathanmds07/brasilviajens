@@ -1,11 +1,11 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // Aplicar modo escuro salvo no localStorage
+  // 1. Aplicar modo escuro salvo no localStorage
   const modoSalvo = localStorage.getItem("modoEscuro");
   if (modoSalvo === "true") {
     document.body.classList.add("dark-mode");
   }
 
-  // Saudação dinâmica (index.html)
+  // 2. Saudação dinâmica (index.html)
   const saudacao = document.getElementById("saudacao");
   if (saudacao) {
     const hora = new Date().getHours();
@@ -16,44 +16,76 @@ window.addEventListener("DOMContentLoaded", () => {
     saudacao.textContent = mensagem;
   }
 
-  // Modal simples para a galeria (galeria.html)
+  // 3. Galeria com Modal com navegação (galeria.html)
   const galeriaImgs = document.querySelectorAll('.galeria img');
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg');
   const descricao = document.getElementById('descricao');
   const btnFechar = document.getElementById('btn-fechar');
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
 
-  if (galeriaImgs.length && modal && modalImg && descricao) {
-    galeriaImgs.forEach(img => {
-      img.addEventListener('click', () => {
-        modal.classList.add('active');
-        modalImg.src = img.src;
-        modalImg.alt = img.alt;
-        descricao.textContent = img.closest('figure').querySelector('figcaption').innerText;
-        modal.focus();
+  if (galeriaImgs.length && modal && modalImg && descricao && btnFechar && btnPrev && btnNext) {
+    let imagens = [];
+    let indiceAtual = 0;
+
+    galeriaImgs.forEach((img, index) => {
+      const figcaption = img.closest('figure')?.querySelector('figcaption');
+      imagens.push({
+        src: img.src,
+        alt: img.alt || "",
+        legenda: figcaption?.innerText || ""
       });
+
+      img.addEventListener('click', () => abrirModal(index));
     });
 
-    btnFechar.addEventListener('click', () => {
-      modal.classList.remove('active');
-    });
+    function abrirModal(indice) {
+      indiceAtual = indice;
+      mostrarImagem(indiceAtual);
+      modal.classList.add('active');
+      modal.focus();
+    }
 
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
+    function fecharModal(event) {
+      if (event.target === modal || event.target === btnFechar) {
         modal.classList.remove('active');
       }
-    });
+    }
 
-    // Fechar modal com ESC
+    function mostrarImagem(indice) {
+      if (indice < 0) indice = imagens.length - 1;
+      if (indice >= imagens.length) indice = 0;
+      indiceAtual = indice;
+      modalImg.src = imagens[indiceAtual].src;
+      modalImg.alt = imagens[indiceAtual].alt;
+      descricao.textContent = imagens[indiceAtual].legenda;
+    }
+
+    function imagemAnterior(event) {
+      event.stopPropagation();
+      mostrarImagem(indiceAtual - 1);
+    }
+
+    function proximaImagem(event) {
+      event.stopPropagation();
+      mostrarImagem(indiceAtual + 1);
+    }
+
+    btnFechar.addEventListener('click', fecharModal);
+    btnPrev.addEventListener('click', imagemAnterior);
+    btnNext.addEventListener('click', proximaImagem);
+    modal.addEventListener('click', fecharModal);
+
     window.addEventListener('keydown', (e) => {
       if (!modal.classList.contains('active')) return;
-      if (e.key === 'Escape') {
-        modal.classList.remove('active');
-      }
+      if (e.key === 'Escape') fecharModal({ target: modal });
+      else if (e.key === 'ArrowLeft') mostrarImagem(indiceAtual - 1);
+      else if (e.key === 'ArrowRight') mostrarImagem(indiceAtual + 1);
     });
   }
 
-  // Mostrar mais/menos (sobre.html)
+  // 4. Mostrar mais/menos (sobre.html)
   const botaoToggle = document.getElementById("btn-toggle");
   if (botaoToggle) {
     botaoToggle.addEventListener("click", () => {
@@ -72,7 +104,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Validação do formulário (contato.html)
+  // 5. Validação do formulário (contato.html)
   const form = document.getElementById("form-contato");
   if (form) {
     form.addEventListener("submit", function (event) {
@@ -91,9 +123,22 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Alternar modo escuro (todas páginas)
+// 6. Alternar modo escuro (todas páginas)
 function alternarModoEscuro() {
   document.body.classList.toggle("dark-mode");
+  const estaEscuro = document.body.classList.contains("dark-mode");
+  localStorage.setItem("modoEscuro", estaEscuro);
+}
+
+// 7. Registrar o Service Worker (PWA)
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("sw.js")
+      .then((reg) => console.log("Service Worker registrado com sucesso:", reg.scope))
+      .catch((err) => console.log("Erro ao registrar Service Worker:", err));
+  });
+}
   const estaEscuro = document.body.classList.contains("dark-mode");
   localStorage.setItem("modoEscuro", estaEscuro);
 }
