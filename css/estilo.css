@@ -268,3 +268,12 @@ form#form-contato button[type="submit"] {
 form#form-contato button[type="submit"]:hover {
   background-color: #504b13;
 }
+
+/* Botão Enviar no modo escuro */
+body.dark-mode form#form-contato button[type="submit"] {
+  background-color: #000000;
+  color: white;
+}
+
+body.dark-mode form#form-contato button[type="submit"]:hover {
+  background-color: #222222;
