@@ -27,18 +27,13 @@ header {
 }
 
 body.dark-mode header {
-  background-color: #000000; /* fundo preto */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  background-color: #000000; /* fundo preto no modo escuro */
 }
 
 body.dark-mode header .logo-container h1,
 body.dark-mode header nav a {
   color: #ADD8E6; /* azul claro */
   text-shadow: none;
-}
-
-body.dark-mode header nav a:hover {
-  color: #ffde59; /* amarelo no hover */
 }
 
 /* Container da logo e título */
@@ -268,6 +263,10 @@ form#form-contato button[type="submit"] {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+form#form-contato button[type="submit"]:hover {
+  background-color: #504b13;
 }
 
 form#form-contato button[type="submit"]:hover {
