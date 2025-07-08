@@ -17,32 +17,29 @@ O projeto é composto por 4 páginas principais:
 
 ## Tecnologias Usadas
 
- - **HTML**: Estrutura básica das páginas.
- - **CSS**: Estilos para layout, responsividade, modo escuro, modal, galeria e botões.
- - **JavaScript**: Funcionalidades interativas como:
- - Saudação dinâmica conforme o horário do dia.
- - Botão “Mostrar mais” para revelar/esconder conteúdo extra.
- - Modal para ampliar imagens e navegação com setas na galeria.
- - Validação básica do formulário de contato.
- - Alternância entre modo claro e modo escuro.
+- **HTML**: Estrutura básica das páginas.
+- **CSS**: Estilos para layout, responsividade, modo escuro, modal, galeria e botões.
+- **JavaScript**: Funcionalidades interativas como:
+- Saudação dinâmica conforme o horário do dia.
+- Botão “Mostrar mais” para revelar/esconder conteúdo extra.
+- Modal para ampliar imagens e navegação com setas na galeria.
+- Validação básica do formulário de contato.
+- Alternância entre modo claro e modo escuro.
 
 
 ## Funcionalidades em Detalhes
 
- - **Saudação dinâmica:** Mostra “Bom dia”, “Boa tarde” ou “Boa noite” na página inicial conforme a hora do dia.
- - **Mostrar mais/menos:** Na página Sobre, um botão que mostra ou oculta conteúdo adicional ao ser clicado.
- - **Galeria com modal:** Ao clicar em qualquer imagem da galeria, abre um modal que permite ampliar a foto e navegar entre as imagens com botões de próximo e anterior.
- - **Validação do formulário:** Garante que o nome e o e-mail sejam preenchidos antes de permitir o envio da mensagem.
- - **Modo escuro:** Botão disponível em todas as páginas para alternar entre tema claro e escuro, melhorando o conforto visual do usuário.
-
+- **Saudação dinâmica:** Mostra “Bom dia”, “Boa tarde” ou “Boa noite” na página inicial conforme a hora do dia.
+- **Mostrar mais/menos:** Na página Sobre, um botão que mostra ou oculta conteúdo adicional ao ser clicado.
+- **Galeria com modal:** Ao clicar em qualquer imagem da galeria, abre um modal que permite ampliar a foto e navegar entre as imagens com botões de próximo e anterior.
+- **Validação do formulário:** Garante que o nome e o e-mail sejam preenchidos antes de permitir o envio da mensagem.
+- **Modo escuro:** Botão disponível em todas as páginas para alternar entre tema claro e escuro, melhorando o conforto visual do usuário.
 
 
 ## Contato
-/2025
 
 Se quiser sugerir melhorias ou tirar dúvidas, entre em contato pelo formulário da página Contato.
 
-
 Aluno:Miguel Oliveira, Nathan Martins e Rafael Moog
 
-Data:09/07
+Data:09/07/2025
