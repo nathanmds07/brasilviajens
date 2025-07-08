@@ -1,11 +1,11 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // Aplicar modo escuro salvo
+  // Aplicar modo escuro salvo no localStorage
   const modoSalvo = localStorage.getItem("modoEscuro");
   if (modoSalvo === "true") {
     document.body.classList.add("dark-mode");
   }
 
-  // Saudação
+  // Saudação dinâmica (index.html)
   const saudacao = document.getElementById("saudacao");
   if (saudacao) {
     const hora = new Date().getHours();
@@ -16,49 +16,63 @@ window.addEventListener("DOMContentLoaded", () => {
     saudacao.textContent = mensagem;
   }
 
-  // Modal simples da galeria
-  const galeriaImgs = document.querySelectorAll(".galeria img");
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modalImg");
-  const descricao = document.getElementById("descricao");
-  const btnFechar = document.getElementById("btn-fechar");
+  // Modal simples para a galeria (galeria.html)
+  const galeriaImgs = document.querySelectorAll('.galeria img');
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const descricao = document.getElementById('descricao');
+  const btnFechar = document.getElementById('btn-fechar');
 
   if (galeriaImgs.length && modal && modalImg && descricao) {
-    galeriaImgs.forEach((img) => {
-      img.addEventListener("click", () => {
-        modal.classList.add("active");
+    galeriaImgs.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.classList.add('active');
         modalImg.src = img.src;
-        descricao.textContent = img.closest("figure")?.querySelector("figcaption")?.innerText || "";
+        modalImg.alt = img.alt;
+        descricao.textContent = img.closest('figure').querySelector('figcaption').innerText;
+        modal.focus();
       });
     });
 
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal || e.target === btnFechar) {
-        modal.classList.remove("active");
+    btnFechar.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+
+    // Fechar modal com ESC
+    window.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        modal.classList.remove('active');
       }
     });
   }
 
-  // Mostrar mais (sobre.html)
+  // Mostrar mais/menos (sobre.html)
   const botaoToggle = document.getElementById("btn-toggle");
   if (botaoToggle) {
     botaoToggle.addEventListener("click", () => {
       const conteudo = document.getElementById("conteudo-extra");
       if (!conteudo) return;
 
-      if (conteudo.hasAttribute("hidden")) {
-        conteudo.removeAttribute("hidden");
+      if (conteudo.hasAttribute('hidden')) {
+        conteudo.removeAttribute('hidden');
         botaoToggle.textContent = "Mostrar menos";
         botaoToggle.setAttribute("aria-expanded", "true");
       } else {
-        conteudo.setAttribute("hidden", "");
+        conteudo.setAttribute('hidden', '');
         botaoToggle.textContent = "Mostrar mais";
         botaoToggle.setAttribute("aria-expanded", "false");
       }
     });
   }
 
-  // Validação de formulário
+  // Validação do formulário (contato.html)
   const form = document.getElementById("form-contato");
   if (form) {
     form.addEventListener("submit", function (event) {
@@ -77,18 +91,9 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Alternar modo escuro (todas páginas)
 function alternarModoEscuro() {
   document.body.classList.toggle("dark-mode");
   const estaEscuro = document.body.classList.contains("dark-mode");
   localStorage.setItem("modoEscuro", estaEscuro);
-}
-
-// PWA
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("sw.js")
-      .then((reg) => console.log("Service Worker registrado:", reg.scope))
-      .catch((err) => console.log("Erro ao registrar Service Worker:", err));
-  });
 }
