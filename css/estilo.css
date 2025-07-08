@@ -26,20 +26,19 @@ header {
   transition: background-color 0.3s ease;
 }
 
-/* Cabeçalho no modo escuro */
 body.dark-mode header {
-  background-color: #1f1c0d; /* tom escuro do amarelo original */
+  background-color: #000000; /* fundo preto */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 body.dark-mode header .logo-container h1,
 body.dark-mode header nav a {
-  color: #eee;
+  color: #ADD8E6; /* azul claro */
   text-shadow: none;
 }
 
 body.dark-mode header nav a:hover {
-  color: #ffde59;
+  color: #ffde59; /* amarelo no hover */
 }
 
 /* Container da logo e título */
@@ -135,11 +134,11 @@ main {
 .modal {
   display: none;
   position: fixed;
-  top: 0;
+  top: 0; 
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0,0,0,0.7);
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -154,17 +153,16 @@ main {
 }
 
 .modal img {
-  width: 600px; /* Tamanho fixo da imagem no modal */
-  height: 400px; /* Mantém altura fixa */
-  object-fit: contain; /* Mantém proporção e não corta a imagem */
+  width: 600px;         
+  height: 400px;        
+  object-fit: contain;  
   background-color: black;
   border-radius: 8px;
   box-shadow: 0 0 10px #000;
   user-select: none;
 }
 
-.modal-btn,
-.modal-btn-fechar {
+.modal-btn, .modal-btn-fechar {
   background: transparent;
   border: none;
   color: white;
@@ -201,7 +199,7 @@ main {
   font-size: 1.1rem;
 }
 
-/* Botão modo escuro fixo e centralizado no rodapé */
+/* Botão modo escuro fixo e centralizado na parte inferior */
 button#btn-modo-escuro {
   position: fixed;
   bottom: 20px;
