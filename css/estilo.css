@@ -220,3 +220,56 @@ button#btn-modo-escuro {
 button#btn-modo-escuro:hover {
   background-color: #504b13;
 }
+
+/* Estilo para o formulário de contato */
+form#form-contato {
+  max-width: 400px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form#form-contato label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: inherit;
+}
+
+form#form-contato input[type="text"],
+form#form-contato input[type="email"],
+form#form-contato textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+form#form-contato input[type="text"]:focus,
+form#form-contato input[type="email"]:focus,
+form#form-contato textarea:focus {
+  border-color: #68621a;
+  outline: none;
+}
+
+form#form-contato textarea {
+  min-height: 100px;
+}
+
+form#form-contato button[type="submit"] {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #68621a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form#form-contato button[type="submit"]:hover {
+  background-color: #504b13;
+}
