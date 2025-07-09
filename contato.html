@@ -28,17 +28,20 @@
     <form id="form-contato" novalidate>
       <label for="nome">Nome:</label>
       <input type="text" id="nome" name="nome" placeholder="Nome" required />
+      <span class="erro" id="erro-nome" aria-live="polite"></span>
 
       <label for="email">E-mail:</label>
       <input type="email" id="email" name="email" placeholder="E-mail" required />
+      <span class="erro" id="erro-email" aria-live="polite"></span>
 
       <label for="mensagem">Mensagem:</label>
       <textarea id="mensagem" name="mensagem" placeholder="Mensagem" required></textarea>
+      <span class="erro" id="erro-mensagem" aria-live="polite"></span>
 
       <button type="submit">Enviar</button>
     </form>
   </main>
 
-<button type="button" id="btn-modo-escuro" onclick="alternarModoEscuro()">Modo Escuro</button>
+  <button type="button" id="btn-modo-escuro" onclick="alternarModoEscuro()">Modo Escuro</button>
 </body>
 </html>
