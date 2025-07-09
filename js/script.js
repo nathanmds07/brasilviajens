@@ -116,21 +116,55 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Validação do formulário
+  // Validação do formulário com mensagens inline
   const form = document.getElementById("form-contato");
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      // Limpa mensagens de erro anteriores
+      document.querySelectorAll(".erro").forEach(el => (el.textContent = ""));
+
       const nome = document.getElementById("nome");
       const email = document.getElementById("email");
+      const mensagem = document.getElementById("mensagem");
 
-      if (!nome.value.trim() || !email.value.trim()) {
-        alert("Por favor, preencha o nome e o e-mail.");
-        return;
+      let valido = true;
+
+      if (!nome.value.trim()) {
+        mostrarErro("erro-nome", "Por favor, preencha seu nome.");
+        valido = false;
       }
+
+      if (!email.value.trim()) {
+        mostrarErro("erro-email", "Por favor, preencha seu e-mail.");
+        valido = false;
+      } else if (!validarEmail(email.value.trim())) {
+        mostrarErro("erro-email", "Por favor, insira um e-mail válido.");
+        valido = false;
+      }
+
+      if (!mensagem.value.trim()) {
+        mostrarErro("erro-mensagem", "Por favor, escreva uma mensagem.");
+        valido = false;
+      }
+
+      if (!valido) return;
 
       alert("Mensagem enviada com sucesso!");
       form.reset();
     });
+
+    function mostrarErro(id, msg) {
+      const span = document.getElementById(id);
+      if (span) {
+        span.textContent = msg;
+      }
+    }
+
+    function validarEmail(email) {
+      const regex = /^\S+@\S+\.\S+$/;
+      return regex.test(email);
+    }
   }
 });
