@@ -160,7 +160,7 @@ main {
 .modal-btn-fechar {
   background: transparent;
   border: none;
-  color: white;
+  color: black;  /* mudou para preto */
   font-size: 2.5rem;
   cursor: pointer;
   user-select: none;
@@ -197,7 +197,7 @@ main {
 /* Formulário de contato */
 form#form-contato {
   max-width: 400px;
-  margin: 20px auto 80px auto; /* margem inferior maior para não sobrepor o botão modo escuro */
+  margin: 20px auto 80px auto; /* margem inferior para o botão */
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -234,15 +234,15 @@ form#form-contato button[type="submit"] {
   padding: 12px;
   font-size: 1rem;
   border-radius: 8px;
-  background-color: #000000; /* Fundo preto */
-  color: white;              /* Texto branco */
+  background-color: #000000; /* botão preto */
+  color: white;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 form#form-contato button[type="submit"]:hover {
-  background-color: #000000; /* Fundo preto no hover */
+  background-color: #222222;
 }
 
 /* Botão modo escuro fixo no rodapé */
@@ -254,13 +254,17 @@ button#btn-modo-escuro {
   padding: 10px 20px;
   font-size: 1rem;
   border-radius: 8px;
-  background-color: #000000; /* Fundo preto */
-  color: white;              /* Texto branco */
+  background-color: #000000; /* botão preto */
+  color: white;
   border: none;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   z-index: 10000;
   transition: background-color 0.3s ease;
+}
+
+button#btn-modo-escuro:hover {
+  background-color: #222222;
 }
 
 button#btn-modo-escuro:hover {
