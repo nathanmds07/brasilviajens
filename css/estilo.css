@@ -264,7 +264,7 @@ button#btn-modo-escuro {
   padding: 10px 20px;
   font-size: 1rem;
   border-radius: 8px;
-  background-color: #68621a;
+  background-color: #000000;
   color: white;
   border: none;
   cursor: pointer;
@@ -274,5 +274,5 @@ button#btn-modo-escuro {
 }
 
 button#btn-modo-escuro:hover {
-  background-color: #504b13;
+  background-color: #000000;
 }
