@@ -234,25 +234,15 @@ form#form-contato button[type="submit"] {
   padding: 12px;
   font-size: 1rem;
   border-radius: 8px;
-  background-color: #68621a;
-  color: white;
+  background-color: #000000; /* Fundo preto */
+  color: white;              /* Texto branco */
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 form#form-contato button[type="submit"]:hover {
-  background-color: #504b13;
-}
-
-/* Botão Enviar no modo escuro */
-body.dark-mode form#form-contato button[type="submit"] {
-  background-color: #000000;
-  color: white;
-}
-
-body.dark-mode form#form-contato button[type="submit"]:hover {
-  background-color: #222222;
+  background-color: #000000; /* Fundo preto no hover */
 }
 
 /* Botão modo escuro fixo no rodapé */
@@ -264,8 +254,8 @@ button#btn-modo-escuro {
   padding: 10px 20px;
   font-size: 1rem;
   border-radius: 8px;
-  background-color: #000000;
-  color: white;
+  background-color: #000000; /* Fundo preto */
+  color: white;              /* Texto branco */
   border: none;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -274,5 +264,5 @@ button#btn-modo-escuro {
 }
 
 button#btn-modo-escuro:hover {
-  background-color: #000000;
+  background-color: #000000; /* Fundo preto no hover */
 }
