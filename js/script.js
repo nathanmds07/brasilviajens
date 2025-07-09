@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
     saudacao.textContent = mensagem;
   }
 
-  // Modal da galeria
+  // Modal da galeria (se houver)
   const galeriaImgs = document.querySelectorAll(".galeria img");
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modalImg");
@@ -97,7 +97,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Mostrar mais/menos
+  // Mostrar mais/menos (se houver)
   const btnToggle = document.getElementById("btn-toggle");
   const conteudo = document.getElementById("conteudo-extra");
 
