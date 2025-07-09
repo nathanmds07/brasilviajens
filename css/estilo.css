@@ -267,3 +267,41 @@ button#btn-modo-escuro {
 button#btn-modo-escuro:hover {
   background-color: #222222;
 }
+
+/* --- Responsividade para celular --- */
+@media (max-width: 600px) {
+
+  .modal img {
+    width: 90vw;
+    height: auto;
+    max-height: 70vh;
+  }
+
+  .galeria img {
+    max-width: 100px;
+    height: 70px;
+  }
+
+  nav a {
+    margin: 0 8px;
+    font-size: 0.9rem;
+  }
+
+  header .logo-container h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  button#btn-modo-escuro {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
+
+button#btn-modo-escuro:hover {
+  background-color: #222222;
+}
